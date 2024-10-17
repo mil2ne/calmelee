@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/logo.png";
+import { AuthModal } from "./AuthModal";
 
 export function Navbar() {
   return (
@@ -11,7 +12,7 @@ export function Navbar() {
           Cal<span className="text-blue-500">Melee</span>
         </h4>
       </Link>
-      <button>Get started Today</button>
+      <AuthModal />
     </div>
   );
 }
