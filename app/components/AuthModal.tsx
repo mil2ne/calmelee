@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import Logo from "@/public/logo.png";
+import { signIn } from "../lib/auth";
+import { GitHubAuthButton, GoogleAuthButton } from "./SubmitButton";
 
 export const AuthModal = () => {
   return (
@@ -22,6 +24,26 @@ export const AuthModal = () => {
               Cal<span className="text-primary">Melee</span>
             </h4>
           </DialogHeader>
+          <div className="flex flex-col mt-5 gap-3">
+            <form
+              action={async () => {
+                "use server";
+                await signIn("google");
+              }}
+              className="w-full"
+            >
+              <GoogleAuthButton />
+            </form>
+            <form
+              action={async () => {
+                "use server";
+                await signIn("github");
+              }}
+              className="w-full"
+            >
+              <GitHubAuthButton />
+            </form>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
